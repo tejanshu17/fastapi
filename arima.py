@@ -11,7 +11,7 @@ app = FastAPI()
 li=[]
 Dict={}
 
-class arima(BaseModel):
+class arima_api(BaseModel):
     arrival_date: str
     modal_price: float
 
@@ -20,7 +20,7 @@ def index():
     return {"trial":"worked"}
     
 @app.post('/predict')
-async def predict_price(data:arima):
+async def predict_price(data:arima_api):
     data=data.dict()
 
     loaded_model = pickle.load(open('model.pkl', 'rb'))
